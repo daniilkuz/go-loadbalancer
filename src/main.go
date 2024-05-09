@@ -48,6 +48,7 @@ func handleErr(err error){
 	}
 }
 
+func Address()
 
 func (lb *LoadBalancer) getNextAvailableServer() Server{}
 func (lb *LoadBalancer) serveProxy(rw http.ResponseWriter, r *http.Request){}
@@ -64,5 +65,5 @@ func main(){
 	}
 	http.HandlerFunc("/", handleRedirect)
 	fmt.Printf("serving requests at 'localhost:%s'\n", lb.port )
-	http.ListenAndServe(":" + lb.port, nil)
+	http.ListenAndServe(":" + lb.port, nil) 
 }
