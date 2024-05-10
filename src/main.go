@@ -42,13 +42,19 @@ func NewLoadBalancer(port string, servers []Server) LoadBalancer{
 }
 
 func handleErr(err error){
-	if err:=nil{
+	if err!=nil{
 		fmt.Printf("error: %v\n", err)
 		os.Exit(1)
 	}
 }
 
-func Address()
+func (s *simpleServer)Address() string {return s.addr}
+
+func (s *simpleServer)IsAlive() bool{return true}
+
+func (s *simpleServer) Server(rw http.ResponseWriter, r *http.Request) {
+	s.proxy.ServeHTTP(rw, r)
+}
 
 func (lb *LoadBalancer) getNextAvailableServer() Server{}
 func (lb *LoadBalancer) serveProxy(rw http.ResponseWriter, r *http.Request){}
